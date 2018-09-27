@@ -1,0 +1,16 @@
+{
+    "from": "openjdk:8-jre-slim",
+    "fromBuild": "maven:3.5-jdk-8-slim",
+    "containerPort": "8080",
+    "copyProjectFiles": [
+        "pom.xml ."
+    ],
+    "runBuildCommands": [
+        "mvn package -Dmaven.test.skip=true"
+    ],
+    "copyBuiltFiles": [
+        "app/target/app-0.1.0-jar-with-dependencies.jar ."
+    ],
+    "devStartCommand": ["java", "-jar", "app/target/app-0.1.0-jar-with-dependencies.jar"],
+    "startCommand": ["java", "-jar", "app-0.1.0-jar-with-dependencies.jar"]
+}
