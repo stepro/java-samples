@@ -1,0 +1,19 @@
+{
+    "from": "openjdk:8-jre-slim",
+    "fromBuild": "maven:3.5-jdk-8-slim",
+    "containerPort": "8080",
+    "copyProjectFiles": [
+        "pom.xml .",
+        "multiple-module-entity/pom.xml multiple-module-entity/",
+        "multiple-module-service/pom.xml multiple-module-service/",
+        "multiple-module-web/pom.xml multiple-module-web/"
+    ],
+    "runBuildCommands": [
+        "mvn package -Dmaven.test.skip=true"
+    ],
+    "copyBuiltFiles": [
+        "multiple-module-web/target/multiple-module-web-0.0.1-SNAPSHOT.jar ."
+    ],
+    "devStartCommand": ["java", "-jar", "multiple-module-web/target/multiple-module-web-0.0.1-SNAPSHOT.jar"],
+    "startCommand": ["java", "-jar", "multiple-module-web-0.0.1-SNAPSHOT.jar"]
+}
