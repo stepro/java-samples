@@ -7,7 +7,7 @@
         "app/pom.xml app/",
         "lib/pom.xml lib/"
     ],
-    "runBuildCommands": [
+    "buildCommands": [
         "mvn package dependency:copy-dependencies -Dmaven.test.skip=true"
     ],
     "copyBuiltFiles": [

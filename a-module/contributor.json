@@ -5,7 +5,7 @@
     "copyProjectFiles": [
         "pom.xml ."
     ],
-    "runBuildCommands": [
+    "buildCommands": [
         "mvn package dependency:copy-dependencies -Dmaven.test.skip=true"
     ],
     "copyBuiltFiles": [

@@ -8,7 +8,7 @@
         "multiple-module-service/pom.xml multiple-module-service/",
         "multiple-module-web/pom.xml multiple-module-web/"
     ],
-    "runBuildCommands": [
+    "buildCommands": [
         "mvn package -Dmaven.test.skip=true"
     ],
     "copyBuiltFiles": [
