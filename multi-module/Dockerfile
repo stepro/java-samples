@@ -4,16 +4,14 @@ WORKDIR /app
 
 FROM maven:3.5-jdk-8-slim AS build
 WORKDIR /usr/src/app
-COPY pom.xml .
+COPY pom.xml ./
 COPY app/pom.xml app/
 COPY lib/pom.xml lib/
 RUN /usr/local/bin/mvn-entrypoint.sh \
-    mvn package dependency:copy-dependencies -Dmaven.test.skip=true --fail-never
+    mvn package dependency:copy-dependencies -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dmaven.javadoc.skip=true --fail-never
 COPY . .
-RUN mvn package dependency:copy-dependencies -Dmaven.test.skip=true
+RUN mvn package dependency:copy-dependencies -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dmaven.javadoc.skip=true
 
 FROM base AS final
-COPY --from=build /usr/src/app/app/target/*.jar .
-# NOTICE: dependencies are from "dependencies", not "dependency"
-COPY --from=build /usr/src/app/app/target/dependencies dependencies
-ENTRYPOINT ["java", "-cp", "*:dependencies/*", "Application"]
+COPY --from=build /usr/src/app/app/target .
+ENTRYPOINT ["java","-cp","./*:./dependencies/*","Application"]

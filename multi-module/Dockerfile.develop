@@ -2,13 +2,12 @@ FROM maven:3.5-jdk-8-slim
 EXPOSE 8080
 
 WORKDIR /usr/src/app
-COPY pom.xml .
+COPY pom.xml ./
 COPY app/pom.xml app/
 COPY lib/pom.xml lib/
 RUN /usr/local/bin/mvn-entrypoint.sh \
-    mvn package dependency:copy-dependencies -Dmaven.test.skip=true --fail-never
+    mvn package dependency:copy-dependencies -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dmaven.javadoc.skip=true --fail-never
 COPY . .
-RUN mvn package dependency:copy-dependencies -Dmaven.test.skip=true
+RUN mvn package dependency:copy-dependencies -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dmaven.javadoc.skip=true
 
-# NOTICE: dependencies are from "dependencies", not "dependency"
-ENTRYPOINT ["java", "-cp", "app/target/*:app/target/dependencies/*", "Application"]
+ENTRYPOINT ["java","-cp","app/target/*:app/target/dependencies/*","Application"]

@@ -1,0 +1,12 @@
+{
+    "configurations": [
+        {
+            "name": "Launch Java Program (AZDS)",
+            "type": "java-azds",
+            "request": "launch",
+            "preLaunchTask": "azds: prelaunch",
+            "port": 56979,
+            "cwd": "/usr/src/app"
+        }
+    ]
+}

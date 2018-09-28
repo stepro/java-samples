@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "multi-module-with-dependen.fullname" . }}
+  labels:
+    app: {{ template "multi-module-with-dependen.name" . }}
+    chart: {{ template "multi-module-with-dependen.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: {{ template "multi-module-with-dependen.name" . }}
+    release: {{ .Release.Name }}
