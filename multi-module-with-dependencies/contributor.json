@@ -3,7 +3,9 @@
     "fromBuild": "maven:3.5-jdk-8-slim",
     "containerPort": "8080",
     "copyProjectFiles": [
-        "pom.xml ."
+        "pom.xml .",
+        "app/pom.xml app/",
+        "lib/pom.xml lib/"
     ],
     "buildCommands": [
         "mvn package -Dmaven.test.skip=true"
