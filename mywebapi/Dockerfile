@@ -11,5 +11,5 @@ COPY . .
 RUN mvn package -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dmaven.javadoc.skip=true
 
 FROM base AS final
-COPY --from=build /usr/src/app/target/mywebapi-0.1.0.jar .
+COPY --from=build /usr/src/app/target/*.jar ./
 ENTRYPOINT ["java","-jar","mywebapi-0.1.0.jar"]

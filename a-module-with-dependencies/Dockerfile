@@ -11,5 +11,5 @@ COPY . .
 RUN mvn package -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dmaven.javadoc.skip=true
 
 FROM base AS final
-COPY --from=build /usr/src/app/target/a-module-0.1.0-jar-with-dependencies.jar .
-ENTRYPOINT ["java","-jar","a-module-0.1.0-jar-with-dependencies.jar"]
+COPY --from=build /usr/src/app/target/*.jar ./
+ENTRYPOINT ["java","-jar","a-module-0.1.0.one-jar.jar"]

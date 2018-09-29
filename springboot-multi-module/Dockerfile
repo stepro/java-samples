@@ -14,5 +14,5 @@ COPY . .
 RUN mvn package -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dmaven.javadoc.skip=true
 
 FROM base AS final
-COPY --from=build /usr/src/app/multiple-module-web/target/multiple-module-web-0.0.1-SNAPSHOT.jar .
+COPY --from=build /usr/src/app/multiple-module-web/target/*.jar ./
 ENTRYPOINT ["java","-jar","multiple-module-web-0.0.1-SNAPSHOT.jar"]

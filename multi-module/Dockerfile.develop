@@ -10,4 +10,4 @@ RUN /usr/local/bin/mvn-entrypoint.sh \
 COPY . .
 RUN mvn package dependency:copy-dependencies -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dmaven.javadoc.skip=true
 
-ENTRYPOINT ["java","-cp","app/target/*:app/target/dependencies/*","Application"]
+ENTRYPOINT ["java","-cp","app/target/*:app/target/dependency/*","Application"]

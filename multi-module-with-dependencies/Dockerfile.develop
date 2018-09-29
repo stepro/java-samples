@@ -10,4 +10,4 @@ RUN /usr/local/bin/mvn-entrypoint.sh \
 COPY . .
 RUN mvn package -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dmaven.javadoc.skip=true
 
-ENTRYPOINT ["java","-jar","app/target/app-0.1.0-jar-with-dependencies.jar"]
+ENTRYPOINT ["java","-jar","app/target/app-0.1.0.one-jar.jar"]

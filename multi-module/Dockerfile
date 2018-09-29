@@ -13,5 +13,6 @@ COPY . .
 RUN mvn package dependency:copy-dependencies -Dmaven.test.skip=true -Dcheckstyle.skip=true -Dmaven.javadoc.skip=true
 
 FROM base AS final
-COPY --from=build /usr/src/app/app/target .
-ENTRYPOINT ["java","-cp","./*:./dependencies/*","Application"]
+COPY --from=build /usr/src/app/app/target/*.jar ./
+COPY --from=build /usr/src/app/app/target/dependency ./dependency
+ENTRYPOINT ["java","-cp","./*:./dependency/*","Application"]
