@@ -28,4 +28,4 @@ configurations:
       iterate:
         processesToKill: [java]
         buildCommands:
-        - [mvn, package, -Dmaven.test.skip=true]
+        - ["mvn","package","-Dmaven.test.skip=true","-Dcheckstyle.skip=true","-Dmaven.javadoc.skip=true"]

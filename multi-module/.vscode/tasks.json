@@ -8,7 +8,7 @@
                 "--port=58155:7000",
                 "--detach",
                 "--keep-alive",
-                "--",
+                "--command",
                 "/javadebug/start.sh"
             ],
             "options": {
